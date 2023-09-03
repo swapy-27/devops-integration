@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment # Kubernetes resource kind we are creating
+metadata:
+  name: k8s-example-app
+spec:
+  selector:
+    matchLabels:
+      app: k8s-example-app
+  replicas: 2 # Number of replicas that will be created for this deployment
+  template:
+    metadata:
+      labels:
+        app: k8s-example-app
+    spec:
+      containers:
+        - name: k8s-example-app
+          image: k8s-example-app:1.0
+          # Image that will be used to containers in the cluster
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+# The port that the container is running on in the cluster
+#
+# apiVersion : describes the version of the API server of K8S that we will be consuming to create our deployment
+#
+#kind: the kind of K8s object that we will be using for this specification
+#
+#metadata : describes information about the app like name and labels
+#
+#  on short notes we can group multiple pods inside single service using label and selector ,
+#  (make sure to mention same name for selector and level in deployment and service YAML file)
+#
+#replicas : describes how many pods we need to run for the same application
+#
+#containers: describes the container’s specification like the name, the image and the exposed port.
+

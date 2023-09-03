@@ -7,11 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/server")
 public class Controller {
-    @GetMapping
+    @GetMapping("/")
     public ResponseEntity<String> sayHello(){
-        return new ResponseEntity<>("Hello", HttpStatus.OK);
+        return new ResponseEntity<>("<h1>Hello Your app is successfully Deployed on K8s</h1>", HttpStatus.OK);
     }
 
 }
